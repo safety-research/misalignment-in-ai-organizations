@@ -1,0 +1,5 @@
+"Qwen/Qwen3-235B-A22B-fp8-tput" 
+"Qwen/Qwen2.5-72B-Instruct-Turbo"
+"deepseek-ai/DeepSeek-V3" 
+"Qwen/Qwen3-235B-A22B-fp8-tput" 
+"meta-llama/Llama-3.3-70B-Instruct-Turbo"

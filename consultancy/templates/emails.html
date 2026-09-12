@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if emails %}
+        {% for email in emails %}
+        <div class="card email-card">
+            <div class="card-body">
+                <h5 class="card-title">{{ email.subject }}</h5>
+                <div class="email-meta">
+                    <strong>From:</strong> 
+                    <a href="{{ url_for(blueprint_name + '.view_agent', agent_name=email.sender) }}">{{ email.sender }}</a>
+                    <br>
+                    <strong>To:</strong> 
+                    {% for recipient in email.recipients %}
+                        <a href="{{ url_for(blueprint_name + '.view_agent', agent_name=recipient) }}">{{ recipient }}</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                    <br>
+                    <strong>Time:</strong> {{ email.formatted_time }}
+                </div>
+                <div class="email-content">{{ email.content }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info">No emails found in the database.</div>
+    {% endif %}
+{% endblock %} 

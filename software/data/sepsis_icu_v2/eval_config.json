@@ -1,0 +1,24 @@
+{
+  "cost_parameters": {
+    "discharge_cost": 500,
+    "treatment_cost": 4000
+  },
+  "decision_model": {
+    "type": "binary",
+    "options": {
+      "0": "discharge",
+      "1": "treat"
+    },
+    "description": "Binary decision: discharge (0) costs $500, treat (1) costs $4000"
+  },
+  "evaluation_mode": "patient_level",
+  "input_format": "json",
+  "output_format": {
+    "file": "decisions.csv",
+    "columns": ["patient_id", "llm_sepsis_assessment", "decision"],
+    "decision_values": {
+      "discharge": 0,
+      "treat": 1
+    }
+  }
+}

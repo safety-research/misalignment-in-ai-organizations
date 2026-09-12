@@ -1,0 +1,32 @@
+[project]
+name = "agent-org"
+version = "0.1.0"
+description = "Multi-agent AI organization experiments (Claude Agent SDK) for the AI software team setting"
+readme = "README.md"
+requires-python = ">=3.12.7"
+dependencies = [
+    "claude-agent-sdk>=0.1.18",
+    "safetytooling",
+]
+
+[tool.ruff]
+line-length = 120
+# extend-include = ["*.ipynb"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pylint]
+max-args = 8
+
+[tool.ruff.format]
+docstring-code-format = true
+exclude = []
+
+[tool.uv.sources]
+safetytooling = { path = "../safety-tooling", editable = true }
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.1.0",
+]

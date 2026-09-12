@@ -1,0 +1,37 @@
+# Ignore data files but keep directory structure and scripts
+data/*
+!data/.gitkeep
+!data/*.py
+!data/*.csv
+!data/consultation/.gitkeep
+!data/software/.gitkeep
+!data/software/sepsis_icu/.gitkeep
+!data/software/sepsis_icu/benign/.gitkeep
+!data/software/sepsis_icu/redteam/.gitkeep
+!data/software/rec_sys/.gitkeep
+!data/software/rec_sys/benign/.gitkeep
+!data/software/rec_sys/redteam/.gitkeep
+
+# Ignore generated figures but keep directory structure
+figures/*
+!figures/.gitkeep
+
+# Ignore common image formats
+*.png
+*.pdf
+*.jpg
+*.jpeg
+*.svg
+
+# Ignore data files
+*.csv
+*.json
+*.parquet
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store

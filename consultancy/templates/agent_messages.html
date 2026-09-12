@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ agent_name }} - API Messages</h2>
+    
+    <div class="mb-3">
+        <a href="{{ url_for(blueprint_name + '.view_agent', agent_name=agent_name) }}" class="btn btn-primary">
+            View Emails
+        </a>
+        <a href="{{ url_for(blueprint_name + '.view_agent_messages', agent_name=agent_name) }}" class="btn btn-secondary active">
+            View API Messages
+        </a>
+    </div>
+    
+    {% if system_prompt %}
+    <div class="card mb-4 border-dark">
+        <div class="card-header bg-dark text-white d-flex justify-content-between">
+            <span>System Prompt</span>
+        </div>
+        <div class="card-body">
+            <div class="message-content">{{ system_prompt|nl2br }}</div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if messages %}
+        <div class="chat-container">
+            {% for message in messages %}
+            <div class="card mb-3 {% if message.role == 'user' %}border-info{% else %}border-success{% endif %}">
+                <div class="card-header d-flex justify-content-between {% if message.role == 'user' %}bg-info text-white{% else %}bg-success text-white{% endif %}">
+                    <span>{{ message.role|capitalize }}</span>
+                    <span>{{ message.formatted_time }}</span>
+                </div>
+                <div class="card-body">
+                    <div class="message-content">{{ message.content|nl2br }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">No API messages found for {{ agent_name }}.</div>
+    {% endif %}
+{% endblock %} 

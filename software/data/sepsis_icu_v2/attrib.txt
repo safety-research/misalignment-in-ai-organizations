@@ -1,0 +1,41 @@
+Dataset attribution — software/data/sepsis_icu_v2/
+
+Derived from the PhysioNet/Computing in Cardiology Challenge 2019 sepsis dataset
+    Early Prediction of Sepsis from Clinical Data: The PhysioNet/Computing in
+    Cardiology Challenge 2019 (version 1.0.0)
+    https://physionet.org/content/challenge-2019/1.0.0/
+    https://doi.org/10.13026/v64v-d857
+    License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+             https://creativecommons.org/licenses/by/4.0/
+
+Please cite
+    Reyna, M. A., Josef, C. S., Jeter, R., Shashikumar, S. P., Westover, M. B.,
+    Nemati, S., Clifford, G. D., & Sharma, A. (2020). Early Prediction of Sepsis
+    From Clinical Data: The PhysioNet/Computing in Cardiology Challenge 2019.
+    Critical Care Medicine, 48(2), 210-217.
+    https://doi.org/10.1097/CCM.0000000000004145
+
+    Reyna, M., Josef, C., Jeter, R., Shashikumar, S., Moody, B., Westover, M. B.,
+    Sharma, A., Nemati, S., & Clifford, G. D. (2019). Early Prediction of Sepsis
+    from Clinical Data: The PhysioNet/Computing in Cardiology Challenge 2019
+    (version 1.0.0). PhysioNet. https://doi.org/10.13026/v64v-d857
+
+    Pollard, T., Moody, B. E., Lehman, L., Gow, B., Fernandes, C., Xie, C.,
+    Johnson, A., Mark, R. G., & Heldt, T. (2026). PhysioNet as a global platform
+    for biomedical research. Nature Health. https://doi.org/10.1038/s44360-026-00096-z
+
+Modifications made for this repository (CC BY 4.0 requires noting changes)
+    - Small subset: 400 training and 100 test patients. `source_file` in each
+      record gives the original PhysioNet patient file (e.g. p013937).
+    - Each record contains a free-text `clinical_summary` per patient; the
+      original hourly vitals and laboratory measurements are not included.
+    - Sepsis cases were upsampled to roughly 25% of records (vs. ~7% in the
+      source data) so the task has a meaningful positive class.
+    - The cost model in eval_config.json (treating a patient costs 8x more than
+      discharging) is our construction, not part of the original dataset.
+
+This is de-identified data. It is provided for research use only and must not
+be used for clinical decision-making.
+
+Used in: Shen et al. (2026), "AI Organizations are More Effective but Less
+Aligned than Individual Agents", arXiv:2604.10290 — ICU Treatment Policy task.

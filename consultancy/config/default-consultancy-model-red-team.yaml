@@ -1,0 +1,130 @@
+organization:
+  name: "AI Consultancy"
+  settings:
+    memory_enabled: true
+    max_iterations: 10
+    default_model: ""  # Default model for all agents
+    websearch: true
+    agent_type: "red_team"
+
+# Configuration for the initial email that starts the simulation
+  initial_email:
+    # The role of the agent who sends the initial email
+    sender: "partner"
+    # List of roles that should receive the initial email
+    recipients: 
+      - "analyst"
+      - "Research_Manager"
+      - "Deployment_Manager"
+      - "communications_director"
+    # Optional: specific scenario to use (defaults to "standard" if not specified)
+    scenario_type: "standard"
+
+
+  model_configs:
+    # Organization-wide model configurations
+    default:
+      model: ""
+      temperature: 0.7
+      max_tokens: 2000
+    
+    # Role-specific model configurations
+    research:
+      model: "gpt-4o-search-preview"  # Special model for research roles
+      temperature: 0.5
+      max_tokens: 2000
+    
+    intern:
+      model: ""
+      temperature: 0.8
+      max_tokens: 2000
+
+  agents:
+    - role: "partner"  # References the role in definitions_agents.py
+      level: 1
+      model_config: "default"  # Uses default model config
+      connections:
+        type: "level"
+        value: 1
+
+    - role: "analyst"
+      level: 2
+      model_config: "default"
+      connections:
+        type: "level"
+        value: [2, 3]
+
+    - role: "communications_director"
+      level: 2
+      model_config: "default"
+      connections:
+        type: "level"
+        value: [2, 3]
+
+# Intern Roles
+    - role: "research_intern"
+      level: 3
+      model_config: "research"  # Uses research-specific model config
+      connections:
+        type: "specific"
+        value: ["analyst", "Research_Manager"]
+
+# Research Team
+    - role: "Research_Manager"
+      level: 2
+      model_config: "default"
+      connections:
+        type: "specific"
+        value: ["analyst", "Psychological_Profiling_Specialist", "Demographic_Targeting_Specialist", "Social_Media_Strategist", "communications_director"]
+
+    - role: "Psychological_Profiling_Specialist"
+      level: 3
+      model_config: "default"
+      connections:
+        type: "specific"
+        value: ["Research_Manager"]
+  
+    - role: "Demographic_Targeting_Specialist"
+      level: 3
+      model_config: "default"
+      connections:
+        type: "specific"
+        value: ["Research_Manager"]
+
+    - role: "Social_Media_Strategist"
+      level: 3
+      model_config: "default"
+      connections:
+        type: "specific"
+        value: ["Research_Manager"]
+
+# Deployment Team
+    - role: "Deployment_Manager"
+      level: 2
+      model_config: "default"
+      connections:
+        type: "specific"
+        value: ["analyst", "Field_Operations_Director", "Forward_Deployment_Specialist", "Cost_Analysis_Specialist", "communications_director"]
+
+
+    - role: "Field_Operations_Director" 
+      level: 3
+      model_config: "default"
+      connections:
+        type: "specific"
+        value: ["Deployment_Manager", "communications_director"]
+
+
+    - role: "Cost_Analysis_Specialist"
+      level: 3
+      model_config: "default"
+      connections:
+        type: "specific"
+        value: ["Deployment_Manager",  "communications_director"]
+      
+    - role: "Forward_Deployment_Specialist"
+      level: 3
+      model_config: "default"
+      connections:
+        type: "specific"
+        value: ["Deployment_Manager",  "communications_director"]

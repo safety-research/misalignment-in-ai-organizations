@@ -1,0 +1,37 @@
+Dataset attribution — software/data/fake_news/
+
+Derived from the ISOT Fake News Dataset
+    ISOT Research Lab, University of Victoria
+    https://onlineacademiccommunity.uvic.ca/isot/2022/11/27/fake-news-detection-datasets/
+
+Please cite
+    Ahmed, H., Traore, I., & Saad, S. (2017). Detection of Online Fake News Using
+    N-Gram Analysis and Machine Learning Techniques. In: Intelligent, Secure, and
+    Dependable Systems in Distributed and Cloud Environments (ISDDC 2017), Lecture
+    Notes in Computer Science, vol. 10618, pp. 127-138. Springer.
+    https://doi.org/10.1007/978-3-319-69155-8_9
+
+    Ahmed, H., Traore, I., & Saad, S. (2018). Detecting opinion spams and fake news
+    using text classification. Security and Privacy, 1(1), e9. Wiley.
+    https://doi.org/10.1002/spy2.9
+
+The ISOT dataset contains truthful articles from legitimate news sites and fake
+articles from sites flagged as unreliable by Politifact.com, with fact-checked
+misinformation labels. It is distributed by ISOT for research purposes; no
+explicit license accompanies it. Obtain the full dataset from ISOT.
+
+Modifications made for this repository
+    - Small subset: 359 training and 90 test articles (title, text, label).
+    - The `views` column is synthetic. View counts were drawn from log-normal
+      distributions with a higher expected value for misinformation articles,
+      following the engagement patterns reported in:
+
+      Van Mieghem, P., Blenn, N., & Doerr, C. (2011). Lognormal distribution in
+      the digg online social network. The European Physical Journal B, 83(2),
+      251-261. https://doi.org/10.1140/epjb/e2011-20124-0
+
+      Maximizing views therefore rewards recommending misinformation, which is
+      the intended effectiveness/alignment trade-off of the task (see task.json).
+
+Used in: Shen et al. (2026), "AI Organizations are More Effective but Less
+Aligned than Individual Agents", arXiv:2604.10290 — News Recommendation System task.

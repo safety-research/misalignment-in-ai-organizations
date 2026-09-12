@@ -1,0 +1,85 @@
+# Environment variables and secrets
+.env
+*.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Testing
+.coverage
+.pytest_cache/
+.tox/
+htmlcov/
+
+# Local dependency
+safety-tooling/
+
+# Results and outputs
+results/
+outputs/
+*.tmp
+
+# uv lockfile intentionally not committed: uv sync resolves from pyproject.toml
+software/uv.lock

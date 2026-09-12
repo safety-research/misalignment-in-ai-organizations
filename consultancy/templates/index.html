@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Available Simulation Databases</h1>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        {% if databases %}
+            <div class="list-group mt-4">
+                {% for db in databases %}
+                    <a href="{{ url_for('view_emails', db_name=db) }}" class="list-group-item list-group-item-action">
+                        {{ db }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning">No simulation databases found.</div>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html> 
